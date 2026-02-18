@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=SF+Pro+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply min-h-screen bg-[#05070d] text-slate-100 antialiased;
+  font-family: 'SF Pro Display', 'Inter', system-ui, -apple-system, sans-serif;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(40, 120, 255, 0.35), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgba(170, 80, 255, 0.28), transparent 30%),
+    radial-gradient(circle at 45% 80%, rgba(26, 220, 180, 0.22), transparent 32%),
+    linear-gradient(150deg, #03040a 0%, #070c16 50%, #04060f 100%);
+}
+
+#root {
+  @apply min-h-screen;
+}
