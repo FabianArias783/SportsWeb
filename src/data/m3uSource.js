@@ -1,5 +1,6 @@
 // Inserta aquí el contenido completo de tu lista M3U.
 // También puedes cargar un archivo .m3u/.m3u8 desde la interfaz (botón 'Subir archivo M3U').
+// Puedes pegar el texto tal cual llega desde tu proveedor o una petición fetch.
 // Este ejemplo incluye muchas categorías para visualizar mejor el estilo tipo plataforma premium.
 export const m3uRawText = `#EXTM3U
 #EXTINF:-1 tvg-id="futbol.ucl" tvg-name="Champions League: PSG vs City" tvg-logo="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1200&q=60" group-title="Fútbol",Champions League: PSG vs City

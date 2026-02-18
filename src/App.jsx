@@ -15,6 +15,7 @@ const VIEWS = {
 export default function App() {
   const [m3uText, setM3uText] = useState(m3uRawText);
   const events = useMemo(() => parseM3U(m3uText), [m3uText]);
+  const events = useMemo(() => parseM3U(m3uRawText), []);
   const categories = useMemo(() => {
     const countByCategory = events.reduce((acc, event) => {
       acc[event.category] = (acc[event.category] || 0) + 1;
