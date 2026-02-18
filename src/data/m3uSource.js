@@ -1,4 +1,5 @@
 // Inserta aquí el contenido completo de tu lista M3U.
+// También puedes cargar un archivo .m3u/.m3u8 desde la interfaz (botón 'Subir archivo M3U').
 // Puedes pegar el texto tal cual llega desde tu proveedor o una petición fetch.
 // Este ejemplo incluye muchas categorías para visualizar mejor el estilo tipo plataforma premium.
 export const m3uRawText = `#EXTM3U

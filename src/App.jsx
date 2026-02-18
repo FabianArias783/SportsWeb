@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import CategoryGrid from './components/CategoryGrid';
 import EventsGrid from './components/EventsGrid';
 import PlayerView from './components/PlayerView';
+import M3USourcePanel from './components/M3USourcePanel';
 import { m3uRawText } from './data/m3uSource';
 import { parseM3U } from './utils/parseM3U';
 
@@ -12,6 +13,8 @@ const VIEWS = {
 };
 
 export default function App() {
+  const [m3uText, setM3uText] = useState(m3uRawText);
+  const events = useMemo(() => parseM3U(m3uText), [m3uText]);
   const events = useMemo(() => parseM3U(m3uRawText), []);
   const categories = useMemo(() => {
     const countByCategory = events.reduce((acc, event) => {
@@ -32,6 +35,18 @@ export default function App() {
     () => events.filter((event) => event.category === selectedCategory),
     [events, selectedCategory]
   );
+
+
+  const applyM3UText = (text) => {
+    setM3uText(text || '');
+    setSelectedCategory('');
+    setSelectedEvent(null);
+    setView(VIEWS.CATEGORIES);
+  };
+
+  const resetExampleM3U = () => {
+    applyM3UText(m3uRawText);
+  };
 
   const handleSelectCategory = (category) => {
     setSelectedCategory(category);
@@ -68,6 +83,14 @@ export default function App() {
             </div>
           </div>
         </header>
+
+        <M3USourcePanel onApplyText={applyM3UText} onResetExample={resetExampleM3U} />
+
+        {events.length === 0 && (
+          <div className="rounded-2xl border border-amber-200/30 bg-amber-300/10 p-4 text-sm text-amber-100">
+            No se detectaron eventos. Verifica que el texto tenga bloques <code>#EXTINF</code> y la URL de stream en la línea siguiente.
+          </div>
+        )}
 
         {view === VIEWS.CATEGORIES && (
           <CategoryGrid categories={categories} onSelectCategory={handleSelectCategory} />
